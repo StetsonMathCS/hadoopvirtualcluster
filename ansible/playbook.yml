@@ -1,0 +1,42 @@
+---
+
+- hosts: slaves
+
+  sudo: yes
+
+  roles:
+    - common
+    - datanode
+ 
+- hosts: namenode
+
+  sudo: yes
+
+  roles:
+    - common
+    - namenode
+
+- hosts: nodemanager
+
+  sudo: yes
+
+  roles:
+    - common
+    - nodemanager
+
+- hosts: resourcemanager
+
+  sudo: yes
+
+  roles:
+    - common
+    - resourcemanager
+
+- hosts: mrjobhistory
+
+  sudo: yes
+
+  roles:
+    - common
+    - mrjobhistory
+

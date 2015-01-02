@@ -1,0 +1,11 @@
+---
+
+- name: Install ResourceManager-specific hadoop config yarn-site.xml
+  template: src=templates/resourcemanager/hadoop-config/yarn-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/yarn-site.xml
+
+- name: Stop ResourceManager
+  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ stop resourcemanager
+
+- name: Start ResourceManager
+  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ start resourcemanager
+

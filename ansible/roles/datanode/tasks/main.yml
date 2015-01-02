@@ -1,0 +1,8 @@
+---
+
+- name: Stop DataNode
+  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ --script hdfs stop datanode
+
+- name: Start DataNode
+  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ --script hdfs start datanode
+

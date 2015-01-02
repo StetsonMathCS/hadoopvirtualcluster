@@ -39,8 +39,11 @@
 - name: Stop chef-client service
   service: name=chef-client state=stopped
 
-- name: Copy Oracle JDK
-  copy: src=jdk-7u71-linux-x64.tar.gz dest=/home/vagrant/jdk-7u71-linux-x64.tar.gz
+- name: Create JDK directory
+  file: path=/usr/lib/jvm state=directory
+
+- name: Copy and extract JDK tgz
+  unarchive: src=jdk-7u71-linux-x64.tar.gz dest=/usr/lib/jvm creates=/usr/lib/jvm/jdk1.7.0_71
 
 - name: Copy Oracle JDK installation script
   copy: src=install-oracle-jdk.sh dest=/home/vagrant/install-oracle-jdk.sh
@@ -48,4 +51,36 @@
 - name: Run Oracle JDK installation script
   command: chdir=/home/vagrant bash install-oracle-jdk.sh
 
+- name: Create hadoop directory
+  file: path=/home/vagrant/hadoop state=directory
+
+- name: Copy and extract Hadoop tgz
+  unarchive: src=hadoop-2.6.0.tar.gz dest=/home/vagrant/hadoop creates=/home/vagrant/hadoop/hadoop-2.6.0
+
+- name: Install hadoop config hadoop-env.sh
+  template: src=templates/common/hadoop-config/hadoop-env.sh dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/hadoop-env.sh
+
+- name: Install hadoop config core-site.xml
+  template: src=templates/common/hadoop-config/core-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/core-site.xml
+
+- name: Install hadoop config hdfs-site.xml
+  template: src=templates/common/hadoop-config/hdfs-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/hdfs-site.xml
+
+- name: Install hadoop config yarn-env.sh
+  template: src=templates/common/hadoop-config/yarn-env.sh dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/yarn-env.sh
+
+- name: Install hadoop config yarn-site.xml
+  template: src=templates/common/hadoop-config/yarn-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/yarn-site.xml
+
+- name: Install hadoop config mapred-env.sh
+  template: src=templates/common/hadoop-config/mapred-env.sh dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/mapred-env.sh
+
+- name: Create hadoop data directory
+  file: path=/home/vagrant/data state=directory
+
+- name: Create hadoop namenode directory
+  file: path=/home/vagrant/data/namenode-name-dir state=directory owner=vagrant
+
+- name: Create hadoop datanode directory
+  file: path=/home/vagrant/data/datanode-data-dir state=directory owner=vagrant
 
