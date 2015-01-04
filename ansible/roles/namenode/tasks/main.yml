@@ -1,14 +1,9 @@
 ---
 
-- name: Install NameNode-specific hadoop config core-site.xml
-  template: src=templates/namenode/hadoop-config/core-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/core-site.xml
+- name: Ensure hadoop group exists
+  group: name=hadoop state=present
 
-- name: Format NameNode (if not already formatted)
-  command: /home/vagrant/hadoop/hadoop-2.6.0/bin/hdfs --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ namenode -format -nonInteractive
-
-- name: Stop NameNode
-  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ --script hdfs stop namenode
-
-- name: Start NameNode
-  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ --script hdfs start namenode
+- name: Set up user accounts for hadoop users
+  user: name={{ item }} groups=hadoop state=present
+  with_lines: cat ../../../hadoop-users.txt
 

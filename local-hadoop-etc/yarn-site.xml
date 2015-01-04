@@ -28,4 +28,14 @@
     <value>___NODEMANAGERIP___</value>
   </property>
 
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+  </property>
+
+  <property>
+    <name>yarn.acl.enable</name>
+    <value>false</value>
+  </property>
+
 </configuration>

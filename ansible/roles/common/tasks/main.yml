@@ -57,24 +57,6 @@
 - name: Copy and extract Hadoop tgz
   unarchive: src=hadoop-2.6.0.tar.gz dest=/home/vagrant/hadoop creates=/home/vagrant/hadoop/hadoop-2.6.0
 
-- name: Install hadoop config hadoop-env.sh
-  template: src=templates/common/hadoop-config/hadoop-env.sh dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/hadoop-env.sh
-
-- name: Install hadoop config core-site.xml
-  template: src=templates/common/hadoop-config/core-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/core-site.xml
-
-- name: Install hadoop config hdfs-site.xml
-  template: src=templates/common/hadoop-config/hdfs-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/hdfs-site.xml
-
-- name: Install hadoop config yarn-env.sh
-  template: src=templates/common/hadoop-config/yarn-env.sh dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/yarn-env.sh
-
-- name: Install hadoop config yarn-site.xml
-  template: src=templates/common/hadoop-config/yarn-site.xml dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/yarn-site.xml
-
-- name: Install hadoop config mapred-env.sh
-  template: src=templates/common/hadoop-config/mapred-env.sh dest=/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/mapred-env.sh
-
 - name: Create hadoop data directory
   file: path=/home/vagrant/data state=directory
 

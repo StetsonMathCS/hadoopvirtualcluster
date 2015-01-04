@@ -1,8 +1,2 @@
 ---
 
-- name: Stop NodeManager
-  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ stop nodemanager
-
-- name: Start NodeManager 
-  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ start nodemanager
-

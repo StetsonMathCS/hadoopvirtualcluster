@@ -1,8 +1,2 @@
 ---
 
-- name: Stop MapReduce JobHistory Server
-  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/mr-jobhistory-daemon.sh stop historyserver --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/
-
-- name: Start MapReduce JobHistory Server
-  command: /home/vagrant/hadoop/hadoop-2.6.0/sbin/mr-jobhistory-daemon.sh start historyserver --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/
-

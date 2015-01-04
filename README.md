@@ -1,3 +1,15 @@
+## Vagrant
+
+Missing files:
+
+```
+#       ansible/hadoop-2.6.0.tar.gz
+#       ansible/hadoop-users.txt
+#       ansible/id_rsa
+#       ansible/id_rsa.pub
+#       ansible/jdk-7u71-linux-x64.tar.gz
+#       ansible/known_hosts
+```
 
 ## libvirt configuration
 

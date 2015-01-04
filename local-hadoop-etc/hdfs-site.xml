@@ -22,6 +22,10 @@
     <value>false</value>
   </property>
   <property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>hadoop</value>
+  </property>
+  <property>
     <!-- Path on the local filesystem where the NameNode stores the namespace and transactions logs persistently. -->
     <name>dfs.namenode.name.dir</name>
     <value>file://___DATADIR___/namenode-name-dir</value>

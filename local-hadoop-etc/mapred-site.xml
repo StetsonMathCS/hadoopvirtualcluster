@@ -19,9 +19,19 @@
 <configuration>
 
   <property>
+    <!-- Indicate we want to actually use YARN -->
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+  </property>
+  <property>
     <!-- NodeManager host -->
     <name>yarn.nodemanager.hostname</name>
     <value>___NODEMANAGERIP___</value>
+  </property>
+  <property>
+    <!-- Map-Reduce Job History host -->
+    <name>mapreduce.jobhistory.address</name>
+    <value>___MRJOBHISTORYIP___:10020</value>
   </property>
 
 </configuration>
