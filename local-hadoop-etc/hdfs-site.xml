@@ -35,4 +35,5 @@
     <name>dfs.datanode.data.dir</name>
     <value>file://___DATADIR___/datanode-data-dir</value>
   </property>
+
 </configuration>

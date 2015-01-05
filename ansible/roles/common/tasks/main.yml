@@ -32,12 +32,27 @@
     - ntp
     - sudo
     - procps
+    - munin
 
 - name: Stop puppet service
   service: name=puppet state=stopped
 
 - name: Stop chef-client service
   service: name=chef-client state=stopped
+
+- name: Copy munin-node config
+  template: src=templates/munin-node.conf dest=/etc/munin/munin-node.conf
+
+- name: Disable some unused munin monitors
+  file: path=/etc/munin/plugins/{{ item }} state=absent
+  with_items:
+    - nfs4_client
+    - nfs_client
+    - nfsd4
+    - nfsd
+
+- name: Restart munin service
+  service: name=munin-node state=restarted
 
 - name: Create JDK directory
   file: path=/usr/lib/jvm state=directory

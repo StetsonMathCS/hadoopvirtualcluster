@@ -12,29 +12,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "namenode" do |namenode|
     namenode.vm.network "private_network", ip: "192.168.50.4"
-    namenode.vm.network "forwarded_port", guest: 50070, host: 50070, gateway_ports: true, host_ip: "*"
+    namenode.vm.network "forwarded_port", guest: 50070, host: 50070, gateway_ports: true, host_ip: "127.0.0.1"
     namenode.vm.hostname = "namenode"
+    namenode.vm.provider :libvirt do |libvirt|
+        libvirt.memory = 16384
+    end
   end
 
   config.vm.define "resourcemanager" do |resourcemanager|
     resourcemanager.vm.network "private_network", ip: "192.168.50.5"
-    resourcemanager.vm.network "forwarded_port", guest: 8088, host: 8088, gateway_ports: true, host_ip: "*"
+    resourcemanager.vm.network "forwarded_port", guest: 8088, host: 8088, gateway_ports: true, host_ip: "127.0.0.1"
     resourcemanager.vm.hostname = "resourcemanager"
   end
 
-  config.vm.define "nodemanager" do |nodemanager|
-    nodemanager.vm.network "private_network", ip: "192.168.50.6"
-    nodemanager.vm.network "forwarded_port", guest: 8042, host: 8042, gateway_ports: true, host_ip: "*"
-    nodemanager.vm.hostname = "nodemanager"
-  end
-
   config.vm.define "mrjobhistory" do |mrjobhistory|
-    mrjobhistory.vm.network "private_network", ip: "192.168.50.7"
-    mrjobhistory.vm.network "forwarded_port", guest: 19888, host: 19888, gateway_ports: true, host_ip: "*"
+    mrjobhistory.vm.network "private_network", ip: "192.168.50.6"
+    mrjobhistory.vm.network "forwarded_port", guest: 19888, host: 19888, gateway_ports: true, host_ip: "127.0.0.1"
     mrjobhistory.vm.hostname = "mrjobhistory"
   end
 
-  slaveids = (2..12)
+  slaveids = (2..22)
   slaveids.each do |slaveid|
     config.vm.define "slave#{slaveid}" do |slave|
       slave.vm.network "private_network", ip: "192.168.51.#{slaveid}"
@@ -50,7 +47,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     ansible.groups = { "namenode" => ["namenode"],
                        "resourcemanager" => ["resourcemanager"],
-                       "nodemanager" => ["nodemanager"],
                        "mrjobhistory" => ["mrjobhistory"],
                        "slaves" => slavehosts }
   end

@@ -1,3 +1,5 @@
+# CINF 401: Big data mining and analytics, Vagrant setup
+
 ## Vagrant
 
 Missing files:
@@ -11,7 +13,18 @@ Missing files:
 #       ansible/known_hosts
 ```
 
-## libvirt configuration
+## Host configuration
+
+`/etc/sudoers`:
+
+```
+Cmnd_Alias MUNIN_RESTART = /sbin/service munin-node restart
+%wheel ALL=(root) NOPASSWD: MUNIN_RESTART
+```
+
+Run `setup-hadoop.sh` as a user in the `wheel` group.
+
+### libvirt configuration
 
 ```
 sudo mkdir /usr/local/virtimages/cinf401

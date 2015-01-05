@@ -23,12 +23,6 @@
   </property>
 
   <property>
-    <!-- NodeManager host -->
-    <name>yarn.nodemanager.hostname</name>
-    <value>___NODEMANAGERIP___</value>
-  </property>
-
-  <property>
     <name>yarn.nodemanager.aux-services</name>
     <value>mapreduce_shuffle</value>
   </property>
