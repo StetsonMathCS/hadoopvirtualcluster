@@ -2,6 +2,7 @@
 
 cd /home/jeckroth/cinf401-vagrant
 
+
 JAVA_HOME=/usr/java/latest
 LOGDIR=/opt/hadoop-2.6.0/logs
 DATADIR=/opt/hadoop-2.6.0/data

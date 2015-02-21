@@ -20,3 +20,6 @@ do
         > /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/$f
 done
 
+sudo mv /vagrant/hosts /etc/hosts
+
+

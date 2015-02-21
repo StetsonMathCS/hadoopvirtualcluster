@@ -32,3 +32,20 @@ virsh -c qemu:///system
 pool-create-as cinf401 dir --target /usr/local/virtimages/cinf401
 ```
 
+
+## Apache config
+
+Requires 2.2+
+
+If you see:
+
+```
+Permission denied: proxy: HTTP: attempt to connect ...
+```
+
+then SELinux is preventing Apache `httpd` from making network connections. Run this:
+
+```
+sudo /usr/sbin/setsebool httpd_can_network_connect 1
+```
+

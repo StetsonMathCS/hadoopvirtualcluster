@@ -12,7 +12,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "namenode" do |namenode|
     namenode.vm.network "private_network", ip: "192.168.50.4"
-    namenode.vm.network "forwarded_port", guest: 50070, host: 50070, gateway_ports: true, host_ip: "127.0.0.1"
     namenode.vm.hostname = "namenode"
     namenode.vm.provider :libvirt do |libvirt|
         libvirt.memory = 16384
@@ -21,17 +20,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "resourcemanager" do |resourcemanager|
     resourcemanager.vm.network "private_network", ip: "192.168.50.5"
-    resourcemanager.vm.network "forwarded_port", guest: 8088, host: 8088, gateway_ports: true, host_ip: "127.0.0.1"
     resourcemanager.vm.hostname = "resourcemanager"
   end
 
   config.vm.define "mrjobhistory" do |mrjobhistory|
     mrjobhistory.vm.network "private_network", ip: "192.168.50.6"
-    mrjobhistory.vm.network "forwarded_port", guest: 19888, host: 19888, gateway_ports: true, host_ip: "127.0.0.1"
     mrjobhistory.vm.hostname = "mrjobhistory"
   end
 
-  slaveids = (2..22)
+  slaveids = (2..25)
   slaveids.each do |slaveid|
     config.vm.define "slave#{slaveid}" do |slave|
       slave.vm.network "private_network", ip: "192.168.51.#{slaveid}"
