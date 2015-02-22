@@ -49,3 +49,12 @@ then SELinux is preventing Apache `httpd` from making network connections. Run t
 sudo /usr/sbin/setsebool httpd_can_network_connect 1
 ```
 
+Also SELinux may prevent a symlink to the `www` directory. Fix this:
+
+```
+sudo chcon -R -t httpd_sys_content_t /home/jeckroth/
+```
+
+(I'm not sure how far up the tree you need to run this command.)
+
+

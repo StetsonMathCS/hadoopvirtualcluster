@@ -1,0 +1,113 @@
+html, * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #111;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+    padding: 20px;
+    background: #FFFFFF;
+}
+
+#container-tight {
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+h1 {
+    margin-bottom: 1em;
+}
+
+h2, h3, h4, h5, h6 {
+    margin: 0.5em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    font-family: "Crete Round", serif;
+}
+
+strong {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+p {
+    margin: 0.8em 0;
+}
+
+ul, ol {
+    margin-left: 2em;
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+ul.links {
+    margin-left: 0;
+}
+
+a, a:visited, a:active, a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #888;
+}
+
+.link {
+    font-size: 32px;
+    margin-right: 10px;
+}
+
+.link-desc {
+    color: #ccc;
+    margin-right: 10px;
+}
+
+ul.links li {
+    margin: 0.5em 0;
+    display: block;
+}
+
+div.license {
+    font-size: 12px;
+    clear: both;
+    padding-top: 20px;
+}
+
+pre {
+    border-left: 4px solid #aaa;
+    padding-left: 15px;
+    margin: 2em 0;
+}
+
+pre, code, tt {
+    font-family: "Ubunto Mono", monospace;
+    font-size: 14px;
+}
+
+code {
+    border: 1px dotted #aaa;
+    padding: 2px;
+}
+
+pre code {
+    border: none;
+    padding: 0;
+}
+
+blockquote {
+    border-left: 4px solid #aaa;
+    padding-left: 15px;
+    margin: 2em 0;
+    padding-left: 30px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+

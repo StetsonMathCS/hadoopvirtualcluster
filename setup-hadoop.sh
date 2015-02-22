@@ -71,7 +71,7 @@ done
 vagrant reload
 
 echo "Restarting namenode daemon..."
-vagrant ssh namenode -- "sudo /vagrant/vm-update-hadoop-ips.sh 0.0.0.0 $RESOURCEMANAGERIP $MRJOBHISTORYIP /usr/lib/jvm/jdk1.7.0_71 /home/vagrant/logs /home/vagrant/data"
+vagrant ssh namenode -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP $MRJOBHISTORYIP /usr/lib/jvm/jdk1.7.0_71 /home/vagrant/logs /home/vagrant/data"
 vagrant ssh namenode -- "sudo /home/vagrant/hadoop/hadoop-2.6.0/bin/hdfs --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ namenode -format -nonInteractive"
 vagrant ssh namenode -- "sudo /home/vagrant/hadoop/hadoop-2.6.0/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ --script hdfs stop namenode"
 vagrant ssh namenode -- "sudo /home/vagrant/hadoop/hadoop-2.6.0/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/ --script hdfs start namenode"

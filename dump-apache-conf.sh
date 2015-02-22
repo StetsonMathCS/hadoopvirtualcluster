@@ -7,15 +7,18 @@ echo "ProxyPass /webhdfs http://namenode:50070/webhdfs"
 echo "ProxyPass /startupProgress http://namenode:50070/startupProgress"
 for host in `vagrant ssh-config | grep '^Host ' | awk -v ORS=' ' '{print $2}'`
 do
-	port=8042
-	if [ "$host" = "resourcemanager" ]; then port=8088; fi
-	if [ "$host" = "namenode" ]; then port=50070; fi
-	if [ "$host" = "mrjobhistory" ]; then port=19888; fi
-	echo "ProxyPass /hadoop/$host/ http://$host:$port/"
-	echo "ProxyPassReverse /hadoop/$host/ http://$host:$port/"
-	echo "<Location /hadoop/$host/>"
-	echo "ProxyHTMLURLMap //(resourcemanager|namenode|mrjobhistory|slave\d+):?\d*(.*)$ /hadoop/\$1/\$2 R"
-	echo "ProxyHTMLURLMap / /hadoop/$host/"
-	echo "</Location>"
+	for port in 8042 50075 50070 8088 19888
+	do
+		echo "ProxyPass /hadoop/$host:$port/ http://$host:$port/"
+		echo "ProxyPassReverse /hadoop/$host:$port/ http://$host:$port/"
+		echo "<Location /hadoop/$host:$port/>"
+		echo "ProxyHTMLURLMap //(resourcemanager|namenode|mrjobhistory|slave\d+):(\d+)(.*)$ /hadoop/\$1:\$2/\$3 R"
+		echo "ProxyHTMLURLMap //resourcemanager(.*)$ /hadoop/resourcemanager:8088/\$1 R"
+		echo "ProxyHTMLURLMap / /hadoop/$host:$port/"
+		echo "ProxyHTMLURLMap /jmx /hadoop/$host:$port/jmx"
+		echo "ProxyHTMLURLMap /webhdfs /hadoop/$host:50075/webhdfs"
+		echo "ProxyHTMLURLMap /startupProgress /hadoop/$host:$port/startupProgress"
+		echo "</Location>"
+	done
 done
 
