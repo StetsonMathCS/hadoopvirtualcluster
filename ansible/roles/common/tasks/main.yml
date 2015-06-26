@@ -49,11 +49,11 @@
 
 #- name: Disable some unused munin monitors
 #  file: path=/etc/munin/plugins/{{ item }} state=absent
-  with_items:
-    - nfs4_client
-    - nfs_client
-    - nfsd4
-    - nfsd
+#  with_items:
+#    - nfs4_client
+#    - nfs_client
+#    - nfsd4
+#    - nfsd
 
 #- name: Restart munin service
 #  service: name=munin-node state=restarted

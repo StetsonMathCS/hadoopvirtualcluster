@@ -28,5 +28,9 @@
     <name>mapreduce.jobhistory.address</name>
     <value>___MRJOBHISTORYIP___:10020</value>
   </property>
+  <property>
+    <name>mapred.task.timeout</name>
+    <value>1800000</value> <!-- 30 minutes -->
+  </property>
 
 </configuration>

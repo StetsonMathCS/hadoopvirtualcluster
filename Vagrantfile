@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     libvirt.driver = "kvm"
     libvirt.uri = "qemu:///system"
     libvirt.storage_pool_name = "cinf401"
-    libvirt.memory = 4096
+    libvirt.memory = 8192
   end
 
   config.vm.define "namenode" do |namenode|
@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     mrjobhistory.vm.hostname = "mrjobhistory"
   end
 
-  slaveids = (2..25)
+  slaveids = (2..22)
   slaveids.each do |slaveid|
     config.vm.define "slave#{slaveid}" do |slave|
       slave.vm.network "private_network", ip: "192.168.51.#{slaveid}"

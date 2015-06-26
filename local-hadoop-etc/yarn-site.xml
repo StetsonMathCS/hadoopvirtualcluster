@@ -32,4 +32,19 @@
     <value>false</value>
   </property>
 
+  <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.scheduler.class</name>
+    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.fair.allocation.file</name>
+    <value>/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/fair-scheduler.xml</value>
+  </property>
+
 </configuration>

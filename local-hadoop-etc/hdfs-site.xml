@@ -35,5 +35,8 @@
     <name>dfs.datanode.data.dir</name>
     <value>file://___DATADIR___/datanode-data-dir</value>
   </property>
-
+  <property>
+    <name>dfs.datanode.socket.write.timeout</name>
+    <value>0</value>
+  </property>
 </configuration>
