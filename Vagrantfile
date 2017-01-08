@@ -1,12 +1,12 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "stetson-cinf401/trusty64"
+  config.vm.box = "stetson/libvirt-ubuntu-trusty64"
 
   config.vm.provider :libvirt do |libvirt|
     libvirt.driver = "kvm"
     libvirt.uri = "qemu:///system"
-    libvirt.storage_pool_name = "cinf401"
+    libvirt.storage_pool_name = "delenn"
     libvirt.memory = 8192
   end
 

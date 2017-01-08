@@ -5,5 +5,5 @@
 
 - name: Set up user accounts for hadoop users
   user: name={{ item }} groups=hadoop state=present
-  with_lines: cat ../../../hadoop-users.txt
+  with_lines: cat hadoop-users.txt
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /home/jeckroth/cinf401-vagrant
+cd /home/jeckroth/hadoopvirtualcluster
 
 
 JAVA_HOME=/usr/java/latest
