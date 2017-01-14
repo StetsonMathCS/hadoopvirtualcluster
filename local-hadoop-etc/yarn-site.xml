@@ -44,7 +44,7 @@
 
   <property>
     <name>yarn.scheduler.fair.allocation.file</name>
-    <value>/home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/fair-scheduler.xml</value>
+    <value>/home/vagrant/hadoop/hadoop-2.7.3/etc/hadoop/fair-scheduler.xml</value>
   </property>
 
 </configuration>

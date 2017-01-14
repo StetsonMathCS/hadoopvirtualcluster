@@ -74,7 +74,7 @@
   file: path=/home/vagrant/hadoop state=directory
 
 - name: Copy and extract Hadoop tgz
-  unarchive: src=hadoop-2.6.0.tar.gz dest=/home/vagrant/hadoop creates=/home/vagrant/hadoop/hadoop-2.6.0
+  unarchive: src=hadoop-{{hadoop_version}}.tar.gz dest=/home/vagrant/hadoop creates=/home/vagrant/hadoop/hadoop-{{hadoop_version}}
 
 - name: Create hadoop data directory
   file: path=/home/vagrant/data state=directory

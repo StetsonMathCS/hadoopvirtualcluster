@@ -61,7 +61,7 @@ Install the libvirt plugin: `vagrant plugin install vagrant-libvirt`
 Add missing files:
 
 ```
-#       ansible/hadoop-2.6.0.tar.gz
+#       ansible/hadoop-2.7.3.tar.gz
 #       ansible/hadoop-users.txt
 #       ansible/id_rsa
 #       ansible/id_rsa.pub

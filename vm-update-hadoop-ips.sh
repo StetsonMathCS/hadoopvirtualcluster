@@ -1,5 +1,6 @@
 #!/bin/sh
 
+HADOOP_VERSION=2.7.3
 NAMENODEIP=$1
 RESOURCEMANAGERIP=$2
 MRJOBHISTORYIP=$3
@@ -17,7 +18,7 @@ do
         sed "s!___JAVA_HOME___!$JAVA_HOME!g" | \
         sed "s!___LOGDIR___!$LOGDIR!g" | \
         sed "s!___DATADIR___!$DATADIR!g" \
-        > /home/vagrant/hadoop/hadoop-2.6.0/etc/hadoop/$f
+        > /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/$f
 done
 
 sudo mv /vagrant/hosts /etc/hosts
