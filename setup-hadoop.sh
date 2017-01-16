@@ -5,7 +5,7 @@ HADOOP_VERSION=2.7.3
 cd /home/jeckroth/hadoopvirtualcluster
 
 
-JAVA_HOME=/usr/java/latest
+JAVA_HOME=/usr/lib/jvm/default/
 LOGDIR=/opt/hadoop-$HADOOP_VERSION/logs
 DATADIR=/opt/hadoop-$HADOOP_VERSION/data
 
@@ -73,25 +73,25 @@ done
 vagrant reload
 
 echo "Restarting namenode daemon..."
-vagrant ssh namenode -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP $MRJOBHISTORYIP /usr/lib/jvm/jdk1.7.0_71 /home/vagrant/logs /home/vagrant/data"
+vagrant ssh namenode -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP $MRJOBHISTORYIP /usr/lib/jvm/jdk1.8.0_112 /home/vagrant/logs /home/vagrant/data"
 vagrant ssh namenode -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/bin/hdfs --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ namenode -format -nonInteractive"
 vagrant ssh namenode -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ --script hdfs stop namenode"
 vagrant ssh namenode -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ --script hdfs start namenode"
 
 echo "Restarting resourcemanager daemon..."
-vagrant ssh resourcemanager -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP 0.0.0.0 $MRJOBHISTORYIP /usr/lib/jvm/jdk1.7.0_71 /home/vagrant/logs /home/vagrant/data"
+vagrant ssh resourcemanager -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP 0.0.0.0 $MRJOBHISTORYIP /usr/lib/jvm/jdk1.8.0_112 /home/vagrant/logs /home/vagrant/data"
 vagrant ssh resourcemanager -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ stop resourcemanager"
 vagrant ssh resourcemanager -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ start resourcemanager"
 
 echo "Restarting mrjobhistory daemon..."
-vagrant ssh mrjobhistory -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP 0.0.0.0 /usr/lib/jvm/jdk1.7.0_71 /home/vagrant/logs /home/vagrant/data"
+vagrant ssh mrjobhistory -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP 0.0.0.0 /usr/lib/jvm/jdk1.8.0_112 /home/vagrant/logs /home/vagrant/data"
 vagrant ssh mrjobhistory -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/mr-jobhistory-daemon.sh stop historyserver --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/"
 vagrant ssh mrjobhistory -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/mr-jobhistory-daemon.sh start historyserver --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/"
 
 for j in `vagrant status | grep -oE '(slave[0-9]+)'`
 do
   echo "Restarting datanode and nodemanager daemons on $j"
-  vagrant ssh $j -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP $MRJOBHISTORYIP /usr/lib/jvm/jdk1.7.0_71 /home/vagrant/logs /home/vagrant/data"
+  vagrant ssh $j -- "sudo /vagrant/vm-update-hadoop-ips.sh $NAMENODEIP $RESOURCEMANAGERIP $MRJOBHISTORYIP /usr/lib/jvm/jdk1.8.0_112 /home/vagrant/logs /home/vagrant/data"
   vagrant ssh $j -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ --script hdfs stop datanode"
   vagrant ssh $j -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/hadoop-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ --script hdfs start datanode"
   vagrant ssh $j -- "sudo /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/sbin/yarn-daemon.sh --config /home/vagrant/hadoop/hadoop-$HADOOP_VERSION/etc/hadoop/ stop nodemanager"

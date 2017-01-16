@@ -79,6 +79,13 @@ ssh -p 2222 -N -L3142:127.0.0.1:3142 cinf401@192.168.121.1
 
 The `known_hosts` file will be generated.
 
+```
+vagrant up --no-parallel
+./setup-hadoop.sh
+```
+
+Then merge `hosts` with `/etc/hosts`
+
 ## Apache config
 
 Requires 2.2+

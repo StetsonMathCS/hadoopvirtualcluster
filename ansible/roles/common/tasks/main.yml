@@ -62,7 +62,7 @@
   file: path=/usr/lib/jvm state=directory
 
 - name: Copy and extract JDK tgz
-  unarchive: src=jdk-7u71-linux-x64.tar.gz dest=/usr/lib/jvm creates=/usr/lib/jvm/jdk1.7.0_71
+  unarchive: src=jdk-8u112-linux-x64.tar.gz dest=/usr/lib/jvm creates=/usr/lib/jvm/jdk1.8.0_112
 
 - name: Copy Oracle JDK installation script
   copy: src=install-oracle-jdk.sh dest=/home/vagrant/install-oracle-jdk.sh
